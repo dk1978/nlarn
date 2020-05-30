@@ -33,7 +33,7 @@ typedef struct _display_colset
     const int  val;
 } display_colset;
 
-const display_colset display_default_colset[] =
+static const display_colset display_default_colset[] =
 {
     { "",             COLOURLESS },
     { "black",        BLACK },
@@ -54,7 +54,7 @@ const display_colset display_default_colset[] =
     { "white",        WHITE }
 };
 
-const display_colset display_dialog_colset[] =
+static const display_colset display_dialog_colset[] =
 {
     { "black",        DDC_BLACK },
     { "red",          DDC_RED },

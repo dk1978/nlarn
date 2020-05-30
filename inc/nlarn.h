@@ -16,8 +16,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __NLARN_H_
-#define __NLARN_H_
+#ifndef NLARN_H
+#define NLARN_H
 
 #include <setjmp.h>
 
@@ -33,22 +33,22 @@
 #endif
 
 /* game version string */
-const char *nlarn_version;
+extern const char *nlarn_version;
 
 /* the entire game */
-game *nlarn;
+extern game *nlarn;
 
 /* death jump buffer - used to return to the main loop when the player has died */
 extern jmp_buf nlarn_death_jump;
 
 /* file paths */
-const char *nlarn_libdir;
-const char *nlarn_mesgfile;
-const char *nlarn_helpfile;
-const char *nlarn_mazefile;
-const char *nlarn_fortunes;
-const char *nlarn_highscores;
-const char *nlarn_inifile;
-const char *nlarn_savefile;
+extern const char *nlarn_libdir;
+extern const char *nlarn_mesgfile;
+extern const char *nlarn_helpfile;
+extern const char *nlarn_mazefile;
+extern const char *nlarn_fortunes;
+extern const char *nlarn_highscores;
+extern const char *nlarn_inifile;
+extern const char *nlarn_savefile;
 
 #endif

@@ -48,14 +48,22 @@
 #include "traps.h"
 
 /* see https://stackoverflow.com/q/36764885/1519878 */
-#define _STR(x) #x
-#define STR(x) _STR(x)
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
 
 /* version string */
 const char *nlarn_version = STR(VERSION_MAJOR) "." STR(VERSION_MINOR) "." STR(VERSION_PATCH) GITREV;
+const char *nlarn_libdir = "";
+const char *nlarn_mesgfile = "";
+const char *nlarn_helpfile = "";
+const char *nlarn_mazefile = "";
+const char *nlarn_fortunes = "";
+const char *nlarn_highscores = "";
+const char *nlarn_inifile = "";
+const char *nlarn_savefile = "";
 
 /* empty scoreboard description */
-const char *room_for_improvement = "\n...room for improvement...\n";
+static const char *room_for_improvement = "\n...room for improvement...\n";
 
 /* path and file name constants*/
 static const char *default_lib_dir = "/usr/share/nlarn";
@@ -74,7 +82,7 @@ static const char *save_file = "nlarn.sav";
 game *nlarn = NULL;
 
 /* the game settings */
-static struct game_config config = {};
+static struct game_config config = {0};
 
 /* death jump buffer - used to return to the main loop when the player has died */
 jmp_buf nlarn_death_jump;
