@@ -1,0 +1,29 @@
+#! /bin/python
+
+# This file contains the default use settings for additional
+# packages. To override these defaults, create a copy of this
+# file named 'SConsettings' in the same directory.
+
+Import('env')
+
+if env['TOOLCHAIN'] == 'mingw_mxe':
+    env['MINGBASEPATH'] = '/opt/mxe'
+    env['USE_GTEST'] = True
+    if env['USE_GTEST']:
+        env['LIBS_GTEST'] = ['gtest', 'gmock']
+        env['CPPPATH_GTEST'] = ''
+        env['LIBPATH_GTEST'] = ''
+elif env['TOOLCHAIN'] == 'mingw_native':
+    env['USE_GTEST'] = True
+    if env['USE_GTEST']:
+        env['LIBS_GTEST'] = ['gtest', 'gmock']
+        env['LIBPATH_GTEST'] = []
+        env['CPPPATH_GTEST'] = []
+elif env['TOOLCHAIN'] == 'clang' or env['TOOLCHAIN'] == 'gcc':
+    env['USE_GTEST'] = False
+    env.Append(CPPDEFINES = 'G_DISABLE_DEPRECATED')
+#    env.Append(CPPPATH = '/usr/include/glib-2.0')
+    env.Append(LIBS = ['m', 'z'])
+    env.ParseConfig("pkg-config glib-2.0 --cflags --libs")
+    env.ParseConfig("pkg-config ncurses --cflags --libs")
+    env.ParseConfig("pkg-config panel --cflags --libs")
