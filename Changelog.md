@@ -1,3 +1,11 @@
+## Release 0.7.7 (unreleased)
+
+### Changes:
+* Show carried gold in yellow (suggested by jv84)
+
+### Fixed bugs:
+* Fix typo in monastery (spotted by jv84)
+
 ## Release 0.7.6 (2020-05-23)
 
 ### Changes:
